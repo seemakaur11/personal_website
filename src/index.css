@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  background: rgb(41, 45, 62);
+  color: #fff;
+}
+
+#root > div {
+  min-height: 100vh;
+}

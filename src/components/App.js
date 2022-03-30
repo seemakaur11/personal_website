@@ -8,7 +8,18 @@ const App = () => {
   return (
     <>
       <Suspense fallback={null}>
-        <Slider images={['/slide-1.jpg', '/slide-2.jpg']} />
+        <Slider
+          images={[
+            '/slide-1.jpg',
+            '/slide-2.jpg',
+            '/slide-1.jpg',
+            '/slide-2.jpg',
+            '/slide-1.jpg',
+            '/slide-2.jpg',
+            '/slide-1.jpg',
+            '/slide-2.jpg',
+          ]}
+        />
 
         <FlyControls rollSpeed={0.75} dragToLook />
       </Suspense>

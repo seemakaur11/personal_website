@@ -3,6 +3,7 @@ import * as React from 'react'
 import * as THREE from 'three'
 import { extend } from '@react-three/fiber'
 import { useTexture, shaderMaterial, Circle } from '@react-three/drei'
+import { animated } from '@react-spring/three'
 
 const ImageMaterialImpl = shaderMaterial(
   {
@@ -115,7 +116,13 @@ const TransparentImage = React.forwardRef(
       : [scale, scale]
     const imageBounds = [texture.image.width, texture.image.height]
     return (
-      <mesh ref={ref} scale={scale} {...props}>
+      <animated.mesh
+        receiveShadow
+        castShadow
+        ref={ref}
+        scale={scale}
+        {...props}
+      >
         <planeGeometry args={[1, 1, segments, segments]} />
         <imageMaterial
           color={color}
@@ -130,7 +137,7 @@ const TransparentImage = React.forwardRef(
           {...materialProps}
         />
         {children}
-      </mesh>
+      </animated.mesh>
     )
   },
 )

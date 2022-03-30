@@ -11,13 +11,10 @@ softShadows()
 const sunPosition = [-3.5, 5.5, 6]
 
 const App = () => {
-  const { quality, toggleQuality, darkMode, toggleDarkMode } = useTheme()
+  const { darkMode, toggleDarkMode } = useTheme()
 
-  const sphereQuality = React.useRef(null)
   const sphereDarkMode = React.useRef(null)
   useFrame(({ clock }) => {
-    if (!quality) return
-    sphereQuality.current?.rotateX(Math.sin(clock.getElapsedTime()) * 0.02)
     sphereDarkMode.current?.rotateX(-Math.sin(clock.getElapsedTime()) * 0.02)
   })
 
@@ -41,9 +38,9 @@ const App = () => {
             inclination={0}
             azimuth={0}
           />
-          {quality && <fog attach="fog" args={['white', 0, 75]} />}
+          <fog attach="fog" args={['white', 0, 75]} />
           <directionalLight
-            castShadow={quality}
+            castShadow
             position={sunPosition}
             intensity={1}
             shadow-mapSize-width={1024}
@@ -57,22 +54,6 @@ const App = () => {
         </>
       )}
 
-      {!darkMode && (
-        <Interactive onSelect={toggleQuality}>
-          <RoundedBox
-            args={[0.5, 0.85, 0.5]}
-            radius={0.25}
-            smoothness={32}
-            ref={sphereQuality}
-            receiveShadow
-            castShadow
-            position={[1, 2.25, -3.5]}
-            onClick={toggleQuality}
-          >
-            <meshPhongMaterial color={color.logo} attach="material" />
-          </RoundedBox>
-        </Interactive>
-      )}
       <Interactive onSelect={toggleDarkMode}>
         <RoundedBox
           args={[0.5, 0.85, 0.5]}

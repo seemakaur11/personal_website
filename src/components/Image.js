@@ -103,6 +103,7 @@ const TransparentImage = React.forwardRef(
       grayscale = 0,
       url,
       toneMapped,
+      materialProps = {},
       ...props
     },
     ref,
@@ -126,6 +127,7 @@ const TransparentImage = React.forwardRef(
           toneMapped={toneMapped}
           transparent
           side={THREE.DoubleSide}
+          {...materialProps}
         />
         {children}
       </mesh>

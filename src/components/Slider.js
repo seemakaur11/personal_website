@@ -35,7 +35,7 @@ const Slider = ({ images }) => {
     setActiveNaive(i >= images.length ? images.length - 1 : i < 0 ? 0 : i)
 
   return (
-    <Flex position={[0, 2, 0]}>
+    <Flex position={[0, 2, -2]}>
       <Box flexDirection="row" flexGrow={1}>
         <Box>
           <Text
